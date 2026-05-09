@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: Inter;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,9 +23,180 @@
     --foreground: #ededed;
   }
 }
-
+*{
+  font-family: 'Inter';
+}
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+h1{
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin: 40px 0 60px 0;
+
+}
+.Start{
+
+  height: 100vh;
+  padding: 25px;
+  display: grid;
+}
+
+.buttons{
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+  height: fit-content;
+  align-self: end;
+}
+.brandGrøn{
+  background-color: #06C167;
+  color: black;
+  cursor: pointer;
+}
+.primaryWhite{
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+button{
+  padding: 14px 0;
+  width: 100%;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  font-family: 'inter', sans-serif;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.inputContainer{
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  input{
+    border: 1px solid var(--primary-colors-brand-grn-hvid-baggrund, #06C167);
+    font-size: 12px;
+    padding: 6px 12px;
+    width: 100%;
+    
+  }
+  label{
+    color: var(--secondary-dark-mode-80-gr-text-secondary, rgba(156, 163, 175, 0.80));
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 19px; /* 118.75% */
+  }
+}
+.Onboarding{
+ padding: 20px 25px 0 25px;
+ height: 100vh;
+}
+.Onboarding-1{
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+}
+.Onboarding-2{
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+}
+.Onboarding-3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p{
+    width: 311px;
+  }
+}
+.tilbageLink{
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.nextButton{
+  border-radius: 100%;
+  position: absolute;
+  top: 90vh;
+  right: 25px;
+  width: fit-content;
+  background-color: var(--primary-colors-brand-grn-hvid-baggrund, #06C167);
+  padding: 16px;
+}
+/* toggle */
+.toggleContainer{
+  display: flex;
+ justify-content: space-between;
+ margin-bottom: 16px;
+ gap: 6px;
+ a{
+  color: var(--primary-colors-brand-grn-hvid-baggrund, #06C167);
+  text-decoration: underline; }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 21px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color:var(--primary-colors-brand-grn-hvid-baggrund, #06C167);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-colors-brand-grn-hvid-baggrund, #06C167);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 40%;
+}
+

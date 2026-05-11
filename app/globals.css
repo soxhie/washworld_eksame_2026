@@ -1,19 +1,87 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: Inter;
-  src: url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-primary: "Gilroy", var(--font-inter), sans-serif;
+
+  /* Mobile typography scale */
+  --display-h1-size: 36px;
+  --display-h1-line: 43px;
+  --h2-size: 32px;
+  --h2-line: 38px;
+  --h3-size: 24px;
+  --h3-line: 29px;
+  --h4-size: 20px;
+  --h4-line: 24px;
+  --h5-size: 18px;
+  --h5-line: 22px;
+  --h6-size: 16px;
+  --h6-line: 19px;
+  --body-lg-size: 20px;
+  --body-lg-line: 30px;
+  --body-md-size: 16px;
+  --body-md-line: 24px;
+  --body-sm-size: 14px;
+  --body-sm-line: 21px;
+  --price-light-size: 10px;
+  --price-light-line: 38px;
+  --label-extra-bold-size: 12px;
+  --link-medium-size: 16px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -27,7 +95,109 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter';
+  font-family: var(--font-primary);
+}
+
+.gilroy_extra_bold,
+.font_extra_bold {
+  font-family: var(--font-primary);
+  font-weight: 800;
+}
+
+.gilroy_medium,
+.font_medium {
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.gilroy_light,
+.font_light {
+  font-family: var(--font-primary);
+  font-weight: 300;
+}
+
+.display-h1 {
+  font-family: var(--font-primary);
+  font-size: var(--display-h1-size);
+  line-height: var(--display-h1-line);
+  font-weight: 800;
+}
+
+.h2 {
+  font-family: var(--font-primary);
+  font-size: var(--h2-size);
+  line-height: var(--h2-line);
+  font-weight: 800;
+}
+
+.h3 {
+  font-family: var(--font-primary);
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: 800;
+}
+
+.h4 {
+  font-family: var(--font-primary);
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  font-weight: 800;
+}
+
+.h5 {
+  font-family: var(--font-primary);
+  font-size: var(--h5-size);
+  line-height: var(--h5-line);
+  font-weight: 800;
+}
+
+.h6 {
+  font-family: var(--font-primary);
+  font-size: var(--h6-size);
+  line-height: var(--h6-line);
+  font-weight: 800;
+}
+
+.body_lg_medium {
+  font-family: var(--font-primary);
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  font-weight: 500;
+}
+
+.body_md_medium {
+  font-family: var(--font-primary);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  font-weight: 500;
+}
+
+.body_sm_medium {
+  font-family: var(--font-primary);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  font-weight: 500;
+}
+
+.price_light {
+  font-family: var(--font-primary);
+  font-size: var(--price-light-size);
+  line-height: var(--price-light-line);
+  font-weight: 300;
+}
+
+.label_extra_bold {
+  font-family: var(--font-primary);
+  font-size: var(--label-extra-bold-size);
+  line-height: normal;
+  font-weight: 800;
+}
+
+.link_medium {
+  font-family: var(--font-primary);
+  font-size: var(--link-medium-size);
+  line-height: normal;
+  font-weight: 500;
 }
 h1{
   font-size: 32px;

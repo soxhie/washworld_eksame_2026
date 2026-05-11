@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { IconType } from "react-icons";
 import { IoPeopleOutline } from "react-icons/io5";
 import { LuClock3, LuSettings, LuLogOut } from "react-icons/lu";
@@ -16,6 +17,19 @@ const iconMap: Record<string, IconType> = {
 };
 
 export default function ProfilePage() {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  function handleItemClick(id: string) {
+    if (id === "logout") {
+      setShowLogoutModal(true);
+    }
+  }
+
+  function handleConfirmLogout() {
+    // TODO: wire up real logout logic
+    setShowLogoutModal(false);
+  }
+
   return (
     <main className="ProfilePage">
       <AppHeader variant="brand" />
@@ -24,7 +38,12 @@ export default function ProfilePage() {
         {profileData.menuItems.map((item) => {
           const Icon = iconMap[item.id];
           return (
-            <button key={item.id} type="button" className="profileMenuItem">
+            <button
+              key={item.id}
+              type="button"
+              className="profileMenuItem"
+              onClick={() => handleItemClick(item.id)}
+            >
               {Icon && <Icon className="menuIcon" aria-hidden="true" />}
               <span className="menuLabel">{item.label}</span>
               <span className="menuChevron" aria-hidden="true">›</span>
@@ -32,6 +51,30 @@ export default function ProfilePage() {
           );
         })}
       </section>
+
+      {showLogoutModal && (
+        <div className="logoutOverlay" role="dialog" aria-modal="true" aria-label="Log ud bekræftelse">
+          <div className="logoutModal">
+            <p className="logoutQuestion">Log ud af din konto ?</p>
+            <div className="logoutActions">
+              <button
+                type="button"
+                className="logoutConfirm"
+                onClick={handleConfirmLogout}
+              >
+                Log ud
+              </button>
+              <button
+                type="button"
+                className="logoutCancel"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Fortryd
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <BottomNav activeTab="profile" variant="angled" />
     </main>

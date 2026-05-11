@@ -1,8 +1,6 @@
+
 "use client";
 import Image from "next/image";
-import { Link } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
 
 export default function OnboardingStep1() {
 

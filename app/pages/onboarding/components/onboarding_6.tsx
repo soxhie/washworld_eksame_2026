@@ -1,12 +1,14 @@
 import { CiCreditCard1 } from "react-icons/ci";
-export default function OnboardingStep6(){
 
+import { useState } from "react";
+export default function OnboardingStep6(){
+    const [selectedPayment, setSelectedPayment] = useState("");
     return(
         <div className="Onboarding-6">
             <h1>Betalingsmetode</h1>
             <form action="">
             <div className="button">
-                <input type="radio" name="paymentMethod" id="card" />
+                <input type="radio" name="paymentMethod" id="card" checked={selectedPayment === "card"} onChange={() => setSelectedPayment("card")} />
                 <CiCreditCard1 size={39}/>
                 <div>
                     <h3>Kort</h3>
@@ -14,7 +16,7 @@ export default function OnboardingStep6(){
                 </div>
             </div>
             <div className="button">
-                <input type="radio" name="paymentMethod" id="mobilepay" />
+                <input type="radio" name="paymentMethod" id="mobilepay" checked={selectedPayment === "mobilepay"} onChange={() => setSelectedPayment("mobilepay")} />
                 <CiCreditCard1 size={39}/>
                 <h3>MobilePay</h3>
             </div>

@@ -9,7 +9,7 @@ import { useState } from "react";
 import PinInput from "./pinInput";
 
 export default function OnboardingStep3() {
-const [showPassword, setShowPassword] = useState(false);
+
 
   return (
    <div className="Onboarding-3">

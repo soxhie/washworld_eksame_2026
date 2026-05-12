@@ -1,7 +1,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter';
+
 }
 
 h1{
@@ -9,11 +9,9 @@ h1{
   font-weight: 800;
   text-align: center;
   margin-top: 40px;
-  font-family: "Inter", sans-serif;
+
 }
-h2,h3,h3,p,label{
-font-family: "Inter", sans-serif;
-}
+
 .Start{
   height: 100vh;
   padding: 25px;
@@ -146,6 +144,9 @@ img {
     display: flex;
     justify-content: space-between;
     margin-bottom:24px;
+  }
+  input[type="radio"]{
+    appearance: none;
   }
   p{
     display: flex;

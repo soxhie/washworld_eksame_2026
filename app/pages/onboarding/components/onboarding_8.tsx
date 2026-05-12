@@ -1,5 +1,5 @@
 
-export default function OnboadingStep8(){
+export default function OnboardingStep8(){
     return(
         <div className="Onboarding-8">
             <h1>Velkommen til Wash World</h1>
@@ -10,4 +10,4 @@ export default function OnboadingStep8(){
         </div>
 
     )
-}2
+}

@@ -1,8 +1,11 @@
 .ProfilePage {
   min-height: 100vh;
+  width: 100%;
   background: #000;
   color: #fff;
   padding-bottom: 100px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .profileMenu {
@@ -97,10 +100,3 @@
   background: #066632;
 }
 
-@media (min-width: 540px) {
-  .ProfilePage {
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
-  }
-}

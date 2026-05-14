@@ -35,9 +35,9 @@ export default function PackageFeatures({ active }: Props) {
   const activeIndex = PACKAGES.indexOf(active);
 
   return (
-    <div style={{ background: "#111", padding: "8px 25px", display: "flex", flexDirection: "column", gap: 3 }}>
+    <div style={{ background: "#111", padding: "26px 25px", display: "flex", flexDirection: "column", gap: 6 }}>
       {features.map((feature) => (
-        <div key={feature.name} style={{ display: "flex", height: 42, gap: 0 }}>
+        <div key={feature.name} style={{ display: "flex", height: 32, gap: 2 }}>
           <div
             style={{
               flex: 1,
@@ -55,7 +55,7 @@ export default function PackageFeatures({ active }: Props) {
             {feature.name}
           </div>
 
-          <div style={{ display: "flex", gap: 2 }}>
+          <div style={{ display: "flex", gap: 6 }}>
             {PACKAGES.map((pkg, i) => {
               const included = feature[pkg];
               const isActive = i === activeIndex;

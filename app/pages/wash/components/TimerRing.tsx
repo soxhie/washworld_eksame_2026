@@ -68,43 +68,32 @@
 //       `}</style>
 //     </div>
 //   );
-// }
-"use client";
+// }"use client";
 
-import { useEffect, useState } from "react";
+type Props = {
+  totalSeconds: number;
+  secondsLeft: number;
+  label: string;
+};
 
-export default function TimerRing({ totalSeconds = 600 }: { totalSeconds?: number }) {
-  const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
-
+export default function TimerRing({ totalSeconds, secondsLeft, label }: Props) {
   const size = 160;
   const r = 72;
   const circ = 2 * Math.PI * r;
-  const elapsed = totalSeconds - secondsLeft;
-  const dashOffset = circ - (circ * elapsed / totalSeconds);
-
-  const mins = Math.floor(secondsLeft / 60);
-  const secs = secondsLeft % 60;
-  const label = `${mins}:${String(secs).padStart(2, "0")}`;
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSecondsLeft((s) => (s <= 0 ? 0 : s - 1));
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
+  const dashOffset = circ * (secondsLeft / totalSeconds);
 
   return (
     <div style={{ position: "relative", width: size, height: size }}>
       <svg width={size} height={size} style={{ transform: "rotate(-90deg)" }}>
         <circle cx="80" cy="80" r={r} fill="none" stroke="#333" strokeWidth="8" />
-<circle
-  cx="80" cy="80" r={r}
-  fill="none" stroke="#22c55e" strokeWidth="8"
-  strokeLinecap="round"
-  strokeDasharray={circ}
-  strokeDashoffset={dashOffset}
-  style={{ transition: "stroke-dashoffset 1s linear" }}
-/>
+        <circle
+          cx="80" cy="80" r={r}
+          fill="none" stroke="#22c55e" strokeWidth="8"
+          strokeLinecap="round"
+          strokeDasharray={circ}
+          strokeDashoffset={dashOffset}
+          style={{ transition: "stroke-dashoffset 1s linear" }}
+        />
       </svg>
       <div style={{
         position: "absolute", inset: 0,

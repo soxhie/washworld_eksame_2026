@@ -1,4 +1,8 @@
+
 "use client";
+
+import React from "react";
+
 import OnboardingStep1 from "./Step1/page";
 import OnboardingStep2 from "./step2/page";
 import OnboardingStep3 from "./step3/page";

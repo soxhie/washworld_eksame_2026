@@ -510,7 +510,7 @@
   background: #066632;
   color: #eaf3ef;
   display: grid;
-  grid-template-columns: 30px 1fr 24px;
+  grid-template-columns: 30px minmax(0, 1fr) 24px;
   align-items: center;
   gap: 12px;
   padding: 0 16px;
@@ -527,7 +527,12 @@
 }
 
 .menuLabel {
+  min-width: 0;
   justify-self: center;
+  line-height: 1;
+  font-size: clamp(26px, 6.8vw, 34px);
+  text-align: center;
+  white-space: nowrap;
 }
 
 .menuChevron {

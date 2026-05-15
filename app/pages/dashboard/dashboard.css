@@ -223,16 +223,16 @@
 
 .locationSheet h1 {
   margin: 0;
-  font-size: clamp(32px, 6.8vw, 42px);
-  line-height: 0.98;
+  font-size: clamp(24px, 5.2vw, 34px);
+  line-height: 1.04;
   font-weight: 800;
 }
 
 .locationSheetAddress {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: #dfdfdf;
-  font-size: 24px;
-  line-height: 1.1;
+  font-size: 15px;
+  line-height: 1.35;
   font-weight: 500;
 }
 
@@ -365,6 +365,52 @@
 .sheetSwipeAction {
   flex: 1;
   min-width: 0;
+}
+
+.membershipPanel {
+  margin-top: 12px;
+  padding: 16px 14px;
+  background:
+    radial-gradient(circle at top right, rgba(6, 193, 103, 0.14), transparent 48%),
+    linear-gradient(180deg, rgba(35, 38, 45, 0.98) 0%, rgba(28, 30, 36, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.membershipTitle {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c9c9ca;
+}
+
+.membershipTier {
+  margin: 4px 0 0;
+  color: #18de84;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.membershipCopy {
+  margin: 12px 0 0;
+  color: #eeeeef;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.membershipLocation {
+  margin: 6px 0 0;
+  color: #0ce578;
+  font-size: 28px;
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+.membershipSwipeWrap {
+  margin-top: 14px;
 }
 
 .sheetPrimaryButton {
@@ -613,11 +659,11 @@
   }
 
   .locationSheet h1 {
-    font-size: 44px;
+    font-size: 26px;
   }
 
   .locationSheetAddress {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .locationMetaRow {
@@ -685,6 +731,19 @@
   .sheetPrimaryButton,
   .sheetSecondaryButton {
     font-size: 13px;
+  }
+
+  .membershipTier {
+    font-size: 22px;
+  }
+
+  .membershipCopy {
+    font-size: 15px;
+  }
+
+  .membershipLocation {
+    font-size: 19px;
+    line-height: 1.2;
   }
 
   .swipeTrack {

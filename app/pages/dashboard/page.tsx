@@ -9,6 +9,7 @@ import "./dashboard.css";
 import AppHeader from "../../components/layout/AppHeader";
 import BottomNav from "../../components/layout/BottomNav";
 import SwipeToStart from "../../components/SwipeToStart/SwipeToStart";
+import mockDashboardData from "./data/mockDashboardData";
 
 const LiveWashMap = dynamic(() => import("./components/LiveWashMap"), {
   ssr: false,
@@ -124,10 +125,29 @@ export default function DashboardPage() {
   const selectedLocation = filteredLocations.find((location) => location.id === selectedLocationId);
   const trafficData = useMemo(() => buildTrafficData(selectedLocation), [selectedLocation]);
   const openingHoursLabel = selectedLocation?.openHours ?? "7-22";
+  const membershipName = (mockDashboardData.user.membershipTier ?? "")
+    .replace(/^Medlemskab:\s*/i, "")
+    .trim() || "Standard";
 
   const resetDetailInteractions = () => {
     setBusyView("open");
   };
+
+  useEffect(() => {
+    if (!isLocationSheetOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsLocationSheetOpen(false);
+        resetDetailInteractions();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isLocationSheetOpen]);
 
   return (
     <main className={isLocationSheetOpen ? "DashboardPage DashboardPageSheetOpen" : "DashboardPage"}>
@@ -225,11 +245,17 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="sheetActions sheetActionsPrimary">
-              <div className="sheetSwipeAction">
-                <SwipeToStart label="Swipe for at starte din vask" flush />
+            <section className="membershipPanel" aria-label="Dit medlemskab">
+              <p className="membershipTitle">Medlemskab</p>
+              <p className="membershipTier">{membershipName}</p>
+              <p className="membershipCopy">Swipe for at starte din vask:</p>
+              <p className="membershipLocation">
+                {selectedLocation.name} - {selectedLocation.address}
+              </p>
+              <div className="membershipSwipeWrap">
+                <SwipeToStart label="Start din vask" flush />
               </div>
-            </div>
+            </section>
 
             {hasVaryingOpenHours ? (
               <div className="metaToggleBar" role="tablist" aria-label="Aabning og travlhed">

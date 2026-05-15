@@ -50,6 +50,8 @@ function normalizeSearchText(value: string) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+const MAX_TRAFFIC_LEVEL = 94;
+
 function buildTrafficData(selectedLocation: WashLocation | undefined): TrafficDay[] {
   if (!selectedLocation) {
     return [];
@@ -59,7 +61,7 @@ function buildTrafficData(selectedLocation: WashLocation | undefined): TrafficDa
   const regionBoost = selectedLocation.regionName?.toLowerCase().includes("hoved") ? 6 : 0;
   const currentHour = new Date().getHours();
   const timeSlots = ["08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"];
-  const levels = [28, 40, 52, 63, 71, 69, 60, 66, 77, 78, 57, 48, 33, 37].map((base) => Math.min(94, base + busyBoost + regionBoost));
+  const levels = [28, 40, 52, 63, 71, 69, 60, 66, 77, 78, 57, 48, 33, 37].map((base) => Math.min(MAX_TRAFFIC_LEVEL, base + busyBoost + regionBoost));
 
   return timeSlots.map((time, index) => ({
     time,
@@ -298,11 +300,11 @@ export default function DashboardPage() {
                   </div>
                   <div className="popularTimesChart" aria-label="Travlhed fordelt paa timer">
                     {trafficData.map((item) => (
-                      <div key={item.time} className="popularTimesColumnWrap">
+                      <div key={item.time} className={item.active ? "popularTimesColumnWrap isActive" : "popularTimesColumnWrap"}>
                         <div className="popularTimesColumnTrack" aria-hidden="true">
                           <span
                             className={item.active ? "popularTimesColumn popularTimesColumnActive" : "popularTimesColumn"}
-                            style={{ height: `${item.level}%` }}
+                            style={{ height: `${(item.level / MAX_TRAFFIC_LEVEL) * 100}%` }}
                           />
                         </div>
                         <span className="popularTimesHour">{Number.parseInt(item.time, 10) % 3 === 0 ? `${item.time}` : ""}</span>
@@ -321,18 +323,18 @@ export default function DashboardPage() {
               ) : (
                 <>
                   <div className="popularTimesHeader">
-                    <span className="popularTimesTitle">Popular times</span>
+                    <span className="popularTimesTitle">Travlhed</span>
                     <span className="popularTimesNote">
                       {trafficData.find((item) => item.active)?.time ?? "14"}:00: {selectedLocation.message ? "Normalt lidt travlt" : "Normalt moderat"}
                     </span>
                   </div>
                   <div className="popularTimesChart" aria-label="Travlhed fordelt paa timer">
                     {trafficData.map((item) => (
-                      <div key={item.time} className="popularTimesColumnWrap">
+                      <div key={item.time} className={item.active ? "popularTimesColumnWrap isActive" : "popularTimesColumnWrap"}>
                         <div className="popularTimesColumnTrack" aria-hidden="true">
                           <span
                             className={item.active ? "popularTimesColumn popularTimesColumnActive" : "popularTimesColumn"}
-                            style={{ height: `${item.level}%` }}
+                            style={{ height: `${(item.level / MAX_TRAFFIC_LEVEL) * 100}%` }}
                           />
                         </div>
                         <span className="popularTimesHour">{Number.parseInt(item.time, 10) % 3 === 0 ? `${item.time}` : ""}</span>

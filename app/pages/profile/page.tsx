@@ -17,7 +17,7 @@ export default function ProfilePage() {
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [detailsForm, setDetailsForm] = useState({
     phone: "+45 11 22 33 44",
-    email: "emily@rodriguez@email.dk",
+    email: "filip@email.dk",
     password: "********",
     paymentMethod: "**** 4242",
     address: "Jagtvej 123, 2200 Kobenhavn N",

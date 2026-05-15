@@ -1,10 +1,10 @@
 "use client";
 
 import { LuChevronRight } from "react-icons/lu";
-import { PiCarProfileBold } from "react-icons/pi";
 import AppHeader from "../../components/layout/AppHeader";
 import BottomNav from "../../components/layout/BottomNav";
 import SwipeToStart from "../../components/SwipeToStart/SwipeToStart";
+import WashHistory from "../profile/components/WashHistory";
 import "./wash.css";
 
 const singleWashOffers = [
@@ -35,9 +35,9 @@ const singleWashOffers = [
 ];
 
 const recentWashes = [
-  { id: "1", location: "Wash World Soborg", time: "I gar, 18:42", plan: "Guld" },
-  { id: "2", location: "Wash World Soborg", time: "27 april 2026, 10:22", plan: "Guld" },
-  { id: "3", location: "Wash World Soborg", time: "29 april 2026, 16:29", plan: "Guld" },
+  { location: "Wash World Soborg", date: "I gar", time: "18:42", label: "Guld" },
+  { location: "Wash World Soborg", date: "27 april 2026", time: "10:22", label: "Guld" },
+  { location: "Wash World Soborg", date: "29 april 2026", time: "16:29", label: "Guld" },
 ];
 
 export default function WashPage() {
@@ -88,23 +88,11 @@ export default function WashPage() {
           ))}
         </section>
 
-        <section className="recentSection" aria-label="Seneste vaske">
-          <h2>Seneste vaske</h2>
-          <ul className="recentList">
-            {recentWashes.map((wash) => (
-              <li key={wash.id} className="recentItem">
-                <div className="carIconBox" aria-hidden="true">
-                  <PiCarProfileBold className="carIcon" />
-                </div>
-                <div className="recentText">
-                  <p className="recentLocation">{wash.location}</p>
-                  <p className="recentTime">{wash.time}</p>
-                </div>
-                <span className="planBadge">{wash.plan}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <WashHistory
+          history={recentWashes}
+          showBackButton={false}
+          title="Seneste vaske"
+        />
       </div>
 
       <BottomNav activeTab="wash" variant="angled" />

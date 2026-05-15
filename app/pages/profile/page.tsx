@@ -5,14 +5,14 @@ import AppHeader from "../../components/layout/AppHeader";
 import BottomNav from "../../components/layout/BottomNav";
 import ProfileMenu from "./components/ProfileMenu";
 import ProfileDetailsForm from "./components/ProfileDetailsForm";
+import ProfileMembershipFlow from "./components/ProfileMembershipFlow";
 import "./profile.css";
 
 import WashHistory from "./components/WashHistory";
 import mockWashHistory from "./data/mockWashHistory";
 
-
 export default function ProfilePage() {
-  const [activeView, setActiveView] = useState<"menu" | "details" | "history">("menu");
+  const [activeView, setActiveView] = useState<"menu" | "membership" | "details" | "history">("menu");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [detailsForm, setDetailsForm] = useState({
@@ -31,6 +31,11 @@ export default function ProfilePage() {
     }
     if (id === "details") {
       setActiveView("details");
+      setSaveMessage(null);
+      return;
+    }
+    if (id === "membership") {
+      setActiveView("membership");
       setSaveMessage(null);
       return;
     }
@@ -69,6 +74,9 @@ export default function ProfilePage() {
           history={mockWashHistory}
           onBack={() => setActiveView("menu")}
         />
+      )}
+      {activeView === "membership" && (
+        <ProfileMembershipFlow onExit={() => setActiveView("menu")} />
       )}
       {activeView === "details" && (
         <ProfileDetailsForm

@@ -998,3 +998,35 @@
   }
 }
 
+.membershipManageButton:hover {
+  background: #099e5a;
+  color: #ffffff;
+  border-color: #00ffae;
+}
+.membershipCancelButton:hover {
+  color: #ff6666;
+}
+.membershipJoinButton:hover {
+  background: #b2f5d6;
+}
+.membershipCreateBackButton:hover {
+  color: #00d881;
+}
+.profileBackButton:hover {
+  color: #00d881;
+}
+.detailsSaveButton:hover {
+  background: linear-gradient(135deg, #099e5a 0%, #0bcc73 100%);
+  color: #ffffff;
+  border-color: #00ffae;
+}
+.membershipCancelConfirmButton:hover {
+  background: #ff3e3e;
+  color: #fffbe6;
+  border-color: #ff7f7f;
+}
+.profileMenuItem:hover {
+  background: #099e5a;
+  color: #ffffff;
+  border-color: #00ffae;
+}

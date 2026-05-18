@@ -17,7 +17,7 @@ function GuldBtn({ active, onClick }: { active: boolean; onClick: () => void }) 
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          paddingLeft: 16,
+          paddingLeft: 18,
           cursor: "pointer",
           clipPath: "polygon(2px 2px, calc(100% - 4px) 2px, calc(100% - 41px) calc(100% - 2px), 2px calc(100% - 2px))",
         }}

@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useMemo, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { LuLocateFixed, LuSearch, LuSlidersHorizontal, LuX } from "react-icons/lu";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import "./dashboard.css";
@@ -90,6 +91,7 @@ function buildTrafficData(
 
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [locations, setLocations] = useState<WashLocation[]>([]);
   const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null);
@@ -256,7 +258,7 @@ export default function DashboardPage() {
               </div>
 
               <div className="membershipSwipeWrap">
-                <SwipeToStart label="Start din vask" flush />
+                <SwipeToStart label="Start din vask" flush onComplete={() => router.push("/pages/wash/washprogrampremium")} />
               </div>
             </section>
 

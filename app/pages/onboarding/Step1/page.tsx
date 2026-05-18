@@ -8,11 +8,10 @@ export default function OnboardingStep1() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
-    const isNextDisabled = firstName.trim() === "" || lastName.trim() === "";
 
     return (
         <>
-            <StepComponent currentStep={1} totalSteps={7} isNextDisabled={isNextDisabled} />
+            <StepComponent currentStep={1} totalSteps={7}  />
             <div className="Onboarding-1">
                 <h1 className="title">Indtast navn</h1>
                 <div className="inputContainer">

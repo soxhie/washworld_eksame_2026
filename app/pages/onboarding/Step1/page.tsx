@@ -1,34 +1,41 @@
-
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import "../onboarding.css"
-export default function OnboardingStep1({ formData, updateFormData }: { formData: any, updateFormData: (data: any) => void }) {
-    
-    
+import { saveOnboardingData } from "../utils/onboardingStorage";
+import "../onboarding.css";
+import { StepComponent } from "../components/stepsComponent";
+export default function OnboardingStep1() {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+    const isNextDisabled = firstName.trim() === "" || lastName.trim() === "";
+
     return (
-        <div className="Onboarding-1">
-            <h1 className="title">Indtast navn</h1>
-            <div className="inputContainer">
-                <label>Navn</label>
-                <input
-                    type="text"
-                    name="user_name"
-                    value={formData.user_name || ""}
-                    onChange={e => updateFormData({ user_name: e.target.value })}
-                    required
-                />
+        <>
+            <StepComponent currentStep={1} totalSteps={7} isNextDisabled={isNextDisabled} />
+            <div className="Onboarding-1">
+                <h1 className="title">Indtast navn</h1>
+                <div className="inputContainer">
+                    <label>Navn</label>
+                    <input
+                        type="text"
+                        name="user_name"
+                        required
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)}
+                    />
+                </div>
+                <div className="inputContainer">
+                    <label htmlFor="Efternavn">Efternavn</label>
+                    <input
+                        type="text"
+                        name="user_last_name"
+                        required
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)}
+                    />
+                </div>
             </div>
-            <div className="inputContainer">
-                <label htmlFor="Efternavn">Efternavn</label>
-                <input
-                    type="text"
-                    name="user_last_name"
-                    value={formData.user_last_name || ""}
-                    onChange={e => updateFormData({ user_last_name: e.target.value })}
-                    required
-                />
-            </div>
-        </div>
+        </>
     );
 }

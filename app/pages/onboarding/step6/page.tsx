@@ -1,7 +1,12 @@
 import { CiCreditCard1 } from "react-icons/ci";
+import MobilePayInput from "../components/MobilepayInput";
+import CardInput from "../components/cardInput";
 
-import { useState } from "react";
-export default function OnboardingStep6({ formData, updateFormData }) {
+export default function OnboardingStep6() {
+
+    const [formData, setFormData] = useState({
+        transaction_gateway_fk: "",
+    });
     return (
         <div className="Onboarding-6">
             <h1>Betalingsmetode</h1>
@@ -10,8 +15,7 @@ export default function OnboardingStep6({ formData, updateFormData }) {
                     type="radio"
                     name="paymentMethod"
                     id="card"
-                    checked={formData.transaction_gateway_fk === "card"}
-                    onChange={() => updateFormData({ transaction_gateway_fk: "card" })}
+                   
                 />
                 <CiCreditCard1 size={39} />
                 <div>
@@ -24,21 +28,15 @@ export default function OnboardingStep6({ formData, updateFormData }) {
                     type="radio"
                     name="paymentMethod"
                     id="mobilepay"
-                    checked={formData.transaction_gateway_fk === "mobilepay"}
-                    onChange={() => updateFormData({ transaction_gateway_fk: "mobilepay" })}
+                  
                 />
                 <CiCreditCard1 size={39} />
                 <h3>MobilePay</h3>
             </div>
-            {/* Payment details fields can be added here if needed */}
-            <label htmlFor="">Telefonnummer</label>
-            <input
-                type="text"
-                name="user_phone"
-                id="user_phone"
-                value={formData.user_phone}
-                onChange={e => updateFormData({ user_phone: e.target.value })}
-            />
+            {formData.transaction_gateway_fk === "card" && <CardInput />}
+            {formData.transaction_gateway_fk === "mobilepay" && <MobilePayInput />}
         </div>
     );
 }
+
+

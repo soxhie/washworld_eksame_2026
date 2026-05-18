@@ -1,40 +1,16 @@
-import { CiCreditCard1 } from "react-icons/ci";
-import { useState } from "react";
-export default function OnboardingStep7({ formData, updateFormData }) {
+
+import { StepComponent } from "../components/stepsComponent";
+
+export default function OnboardingStep7() {
     return (
-        <div className="Onboarding-7">
-            <h1>Betalingsmetode</h1>
-            <div className="button">
-                <input
-                    type="radio"
-                    name="paymentMethod"
-                    id="card"
-                    checked={formData.transaction_gateway_fk === "card"}
-                    onChange={() => updateFormData({ transaction_gateway_fk: "card" })}
-                />
-                <div>
-                    <h3>Kort</h3>
-                    <h4>Visa/Mastercard</h4>
-                </div>
+        <>
+            <StepComponent currentStep={7} totalSteps={7}/>
+            <div className="Onboarding-7">
+                <h1>Velkommen til Wash World</h1>
+                <h2>Du er nu medlem!</h2>
+                <p>Din bil er nu klar til vask!</p>
+                <p>God tur!</p>
             </div>
-            <div className="button">
-                <input
-                    type="radio"
-                    name="paymentMethod"
-                    id="mobilepay"
-                    checked={formData.transaction_gateway_fk === "mobilepay"}
-                    onChange={() => updateFormData({ transaction_gateway_fk: "mobilepay" })}
-                />
-                <h3>MobilePay</h3>
-            </div>
-            <label htmlFor="">Telefonnummer</label>
-            <input
-                type="text"
-                name="user_phone"
-                id="user_phone"
-                value={formData.user_phone}
-                onChange={e => updateFormData({ user_phone: e.target.value })}
-            />
-        </div>
+        </>
     );
 }

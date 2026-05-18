@@ -4,6 +4,7 @@ import Toggle from "../components/toggle";
 import "../onboarding.css"
 import PasswordRequirements from "../components/passwordRequirements";
 import { StepComponent } from "../components/stepsComponent";
+import Toggle from "../components/toggle";
 export default function OnboardingStep2() {
    
     return (
@@ -22,20 +23,7 @@ export default function OnboardingStep2() {
             </div>
             <PasswordRequirements />
           
-            <div className="toggleContainer">
-                <p>Jeg acceptere <a href="">Terms & Condtions</a></p>
-                <label className="switch">
-                    <input type="checkbox" required />
-                    <span className="slider round"></span>
-                </label>
-            </div>
-            <div className="toggleContainer">
-                <p>Jeg acceptere <a href="">Privacy guidelines</a></p>
-                <label className="switch">
-                    <input type="checkbox" required />
-                    <span className="slider round"></span>
-                </label>
-            </div>
+            <Toggle />
         </div>
         </>);
 }

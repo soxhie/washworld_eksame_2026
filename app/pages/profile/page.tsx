@@ -9,12 +9,12 @@ import ProfileMembershipFlow from "./components/ProfileMembershipFlow";
 import "./profile.css";
 
 
-const iconMap: Record<string, IconType> = {
-  membership: IoPeopleOutline,
-  history: LuClock3,
-  details: LuSettings,
-  logout: LuLogOut,
-};
+// const iconMap: Record<string, IconType> = {
+//   membership: IoPeopleOutline,
+//   history: LuClock3,
+//   details: LuSettings,
+//   logout: LuLogOut,
+// };
 import WashHistory from "./components/WashHistory";
 import mockWashHistory from "./data/mockWashHistory";
 

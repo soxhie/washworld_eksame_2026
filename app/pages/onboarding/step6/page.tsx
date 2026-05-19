@@ -1,6 +1,4 @@
-"use client";
-import { CiCreditCard1 } from "react-icons/ci";
-import MobilePayInput from "../components/MobilepayInput";
+
 import { StepComponent } from "../components/stepsComponent";
 import CardInput from "../components/cardInput";
 import { FaArrowRight } from "react-icons/fa";
@@ -10,6 +8,7 @@ import { useState } from "react";
 export default function OnboardingStep6() {
     const [paymentMethod, setPaymentMethod] = useState("card");
 
+export default function OnboardingStep7() {
     return (
        
             <div className="Onboarding-6">
@@ -59,5 +58,3 @@ export default function OnboardingStep6() {
        
     );
 }
-
-

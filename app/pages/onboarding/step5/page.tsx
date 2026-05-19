@@ -7,13 +7,12 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { StepComponent } from "../components/stepsComponent";
-export default function OnboardingStep5() {
-    const plans = [
-        { name: "guld", price: 139, description: "God og effectiv" },
-        { name: "premium", price: 169, description: "Extra Grundig" },
-        { name: "brilliant", price: 200, description: "Bedste vask året rundt" }
-    ];
-    const [clickedPlan, setClickedPlan] = useState<string | null>(null);
+import CardInput from "../components/cardInput";
+import { useState } from "react";
+
+export default function OnboardingStep6() {
+    const [paymentMethod, setPaymentMethod] = useState("card");
+
     return (
        
             
@@ -56,3 +55,5 @@ export default function OnboardingStep5() {
     
     );
 }
+
+

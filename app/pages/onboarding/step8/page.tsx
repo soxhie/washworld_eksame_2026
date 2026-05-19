@@ -1,5 +1,6 @@
 "use client";
-
+import { FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import SuccessAnimation from "../components/SuccessAnimation";
 
 
@@ -13,6 +14,15 @@ export default function OnboardingStep8() {
       <h2>Du er nu medlem!</h2>
       <p>Din bil er nu klar til vask!</p>
       <p>God tur!</p>
+       <button
+                className='nextButton'
+                type="button"
+                onClick={() => {
+                  
+                }}
+              >
+                <FaArrowRight />
+              </button>
     </div>
   );
 }

@@ -5,6 +5,9 @@ import "../onboarding.css"
 import PasswordRequirements from "../components/passwordRequirements";
 import { StepComponent } from "../components/stepsComponent";
 import Toggle from "../components/toggle";
+import { FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
+
 export default function OnboardingStep2() {
     const [error, setError] = useState("")
     const [succes, setSuccess] = useState("")
@@ -38,10 +41,40 @@ export default function OnboardingStep2() {
    
    
     return (
-         <>
-            <StepComponent currentStep={2} totalSteps={7}  />
+       
             <div className="Onboarding-2">
-            
+            <button
+                      className='tilbageLink'
+                      type="button"
+                     
+                    >
+                      <FaChevronLeft /> Tilbage
+                    </button>
+            <h1>Opret bruger</h1>
+            <div className="inputContainer">
+                <label>Email</label>
+                <input
+                    name="user_email"
+                    type="text"
+                    required
+                    ref={emailRef}
+                    
+                />
+                {error && <div style={{ color: 'red', marginTop: 4 }}>{error}</div>}
+            </div>
+            <PasswordRequirements />
+          
+            <Toggle />
+             <button
+                className='nextButton'
+                type="button"
+                onClick={() => {
+                  validateEmail();
+                }}
+            >
+                <FaArrowRight />
+            </button>
         </div>
-        </>);
+        
+        );
 }

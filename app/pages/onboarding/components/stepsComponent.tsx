@@ -5,6 +5,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import OnboardingStep2 from "../step2/page";
 import "../onboarding.css";
 
 
@@ -14,7 +15,7 @@ interface StepComponentProps {
   totalSteps?: number;
 }
 
-export function StepComponent({ currentStep, totalSteps = 7 }: StepComponentProps) {
+export function StepComponent({ currentStep, totalSteps = 7, validateEmail }: StepComponentProps & { validateEmail: () => void }) {
 
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
@@ -47,8 +48,10 @@ export function StepComponent({ currentStep, totalSteps = 7 }: StepComponentProp
         <button
           className='nextButton'
           type="button"
-          onClick={handleNext}
-          
+          onClick={() => {
+            validateEmail();
+            handleNext();
+          }}
         >
           <FaArrowRight />
         </button>

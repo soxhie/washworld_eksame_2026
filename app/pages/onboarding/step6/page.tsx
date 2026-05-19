@@ -3,15 +3,23 @@ import { CiCreditCard1 } from "react-icons/ci";
 import MobilePayInput from "../components/MobilepayInput";
 import { StepComponent } from "../components/stepsComponent";
 import CardInput from "../components/cardInput";
+import { FaArrowRight } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import { useState } from "react";
 
 export default function OnboardingStep6() {
     const [paymentMethod, setPaymentMethod] = useState("card");
 
     return (
-        <>
-            <StepComponent currentStep={3} totalSteps={7} />
+       
             <div className="Onboarding-6">
+                <button
+                          className='tilbageLink'
+                          type="button"
+                         
+                        >
+                          <FaChevronLeft /> Tilbage
+                        </button>
                 <h1>Betalingsmetode</h1>
                 <div className="button">
                     <input
@@ -40,8 +48,15 @@ export default function OnboardingStep6() {
                 </div>
                 {paymentMethod === "card" && <CardInput />}
                 {paymentMethod === "mobilepay" && <MobilePayInput />}
+             <button
+                      className='nextButton'
+                      type="button"
+
+                    >
+                      <FaArrowRight />
+                    </button>
             </div>
-        </>
+       
     );
 }
 

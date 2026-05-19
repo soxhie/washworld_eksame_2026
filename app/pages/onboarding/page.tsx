@@ -5,10 +5,10 @@ import React from "react";
 
 import OnboardingStep1 from "./step1/page";
 import OnboardingStep2 from "./step2/page";
-import OnboardingStep4 from "./step4/page";
-import OnboardingStep5 from "./step5/page";
-import OnboardingStep6 from "./step6/page";
-import OnboardingStep7 from "./step7/page";
+import OnboardingStep4 from "./step3/page";
+import OnboardingStep5 from "./step4/page";
+import OnboardingStep6 from "./step5/page";
+import OnboardingStep7 from "./step6/page";
 
 import { StepComponent } from "./components/stepsComponent";
 import { FaArrowRight } from "react-icons/fa";
@@ -25,8 +25,8 @@ export default function Onboarding() {
   const [success, setSuccess] = useState("");
   const [formData, setFormData] = useState({});
   const [currentStep, setCurrentStep] = useState(0);
-  const [value, setValue]=useState("")
- 
+  const [value, setValue] = useState("")
+
   const handleSignup = async () => {
     setError("");
     setSuccess("");
@@ -37,7 +37,7 @@ export default function Onboarding() {
         if (saved) {
           try {
             dataToSend = JSON.parse(saved);
-          } catch {}
+          } catch { }
         }
       }
       const response = await fetch("http://127.0.0.1:8080/signup", {
@@ -52,7 +52,7 @@ export default function Onboarding() {
         try {
           const data = await response.json();
           errorMsg = data.error || data.message || errorMsg;
-        } catch {}
+        } catch { }
         throw new Error(errorMsg);
       }
       setSuccess("Signup successful!");
@@ -66,9 +66,9 @@ export default function Onboarding() {
 
   return (
     <div className='Onboarding'>
-     
-    
-      
+
+
+
     </div>
   );
 }

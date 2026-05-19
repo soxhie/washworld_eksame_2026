@@ -14,7 +14,7 @@ interface StepComponentProps {
   totalSteps?: number;
 }
 
-export function StepComponent({ currentStep, totalSteps = 7 }: StepComponentProps) {
+export function StepComponent({ currentStep, totalSteps = 6 }: StepComponentProps) {
 
   const [inputValue, setInputValue] = useState("");
   const router = useRouter();
@@ -48,7 +48,7 @@ export function StepComponent({ currentStep, totalSteps = 7 }: StepComponentProp
           className='nextButton'
           type="button"
           onClick={handleNext}
-          
+
         >
           <FaArrowRight />
         </button>

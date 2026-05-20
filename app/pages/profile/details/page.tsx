@@ -23,31 +23,6 @@ const DEFAULT_DETAILS_FORM = {
   plateNumber: "AB 12 456",
 };
 
-function getInitialDetailsForm() {
-  if (typeof window === "undefined") {
-    return DEFAULT_DETAILS_FORM;
-  }
-
-  const rawUser = localStorage.getItem("authUser");
-  if (!rawUser) {
-    return DEFAULT_DETAILS_FORM;
-  }
-
-  try {
-    const user = JSON.parse(rawUser) as AuthUser;
-
-    return {
-      ...DEFAULT_DETAILS_FORM,
-      phone: user.user_phone || DEFAULT_DETAILS_FORM.phone,
-      email: user.user_email || DEFAULT_DETAILS_FORM.email,
-      address: user.user_adress || DEFAULT_DETAILS_FORM.address,
-      plateNumber: user.car_plate || DEFAULT_DETAILS_FORM.plateNumber,
-    };
-  } catch {
-    // Ignore invalid localStorage value and keep defaults.
-    return DEFAULT_DETAILS_FORM;
-  }
-}
 
 export default function ProfileDetailsPage() {
   const router = useRouter();

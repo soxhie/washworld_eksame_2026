@@ -444,6 +444,7 @@
   font-size: 54px;
   font-weight: 800;
   line-height: 1.04;
+  text-align: center;
 }
 
 .membershipCancelSubtitle {
@@ -464,19 +465,20 @@
 .membershipCancelReasonTitle {
   margin: 24px 0 12px;
   color: #f2f2f2;
-  font-size: 38px;
+  font-size: 22px;
   font-weight: 700;
+
 }
 
 .membershipCancelReasonList {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 
 .membershipCancelReasonButton {
   min-height: 34px;
-  border-radius: 999px;
   border: 1px solid #404a48;
   background: transparent;
   color: #f2f2f2;
@@ -931,13 +933,14 @@
   }
 
   .membershipCancelReasonTitle {
-    font-size: 30px;
+    font-size: 16px;
   }
 
   .membershipCancelReasonButton {
     min-height: 32px;
     font-size: 15px;
     padding: 0 16px;
+    text-align: center;
   }
 
   .membershipCancelConfirmButton {

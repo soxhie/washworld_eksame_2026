@@ -100,7 +100,7 @@ function MembershipDetails({
       </ul>
 
       <button type="button" className="membershipManageButton">
-        <span>Manage membership</span>
+        <span>Ændre medlemskab</span>
         <span className="membershipManageArrow" aria-hidden="true">›</span>
       </button>
 
@@ -145,7 +145,7 @@ function MembershipCancelView({ onBack }: { onBack: () => void }) {
         * Hvis du opsiger nu, fortsaetter medlemskabet til slutningen af din betalingsperiode.
       </p>
 
-      <h2 className="membershipCancelReasonTitle">Hvorfor annullerer du?</h2>
+      <h3 className="membershipCancelReasonTitle">Hjælp os med at blive bedre og fortæl hvorfor du ønsker at annullerer dit medlemskab</h3>
 
       <div className="membershipCancelReasonList" role="group" aria-label="Aarsag til annullering">
         {cancelReasons.map((reason) => (

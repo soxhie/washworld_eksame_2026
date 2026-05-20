@@ -1,3 +1,5 @@
+"use client";
+
 import { IconType } from "react-icons";
 import {
   LuCloud,
@@ -8,6 +10,8 @@ import {
   LuWind,
 } from "react-icons/lu";
 import { IoPeopleOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import SwipeToStart from "../../../components/SwipeToStart/SwipeToStart";
 import { SubscriptionPlan } from "../data/membershipTypes";
 
 function featureIcon(featureName: string): IconType {
@@ -26,6 +30,8 @@ interface MembershipPlanDetailsProps {
 }
 
 export default function MembershipPlanDetails({ onBack, plan }: MembershipPlanDetailsProps) {
+  const router = useRouter();
+
   return (
     <section className="membershipPlanDetails" aria-label={`Valgt plan ${plan.name}`}>
       <button type="button" className="profileBackButton" onClick={onBack}>
@@ -60,10 +66,11 @@ export default function MembershipPlanDetails({ onBack, plan }: MembershipPlanDe
         })}
       </ul>
 
-      <button type="button" className="membershipJoinButton">
-        <span className="membershipJoinButtonIcon" aria-hidden="true">›</span>
-        <span className="membershipJoinButtonText">Bliv medlem</span>
-      </button>
+      <SwipeToStart
+        label="Skift medlemskab"
+        completedLabel="Videresender..."
+        onComplete={() => router.push(`/pages/profile/membership/change/${plan.id}/payment`)}
+      />
     </section>
   );
 }

@@ -6,9 +6,9 @@ import React from "react";
 import OnboardingStep1 from "./step1/page";
 import OnboardingStep2 from "./step2/page";
 import OnboardingStep4 from "./step2/page";
-import OnboardingStep5 from "./step3/page";
-import OnboardingStep6 from "./step4/page";
-import OnboardingStep7 from "./step5/page";
+import OnboardingStep5 from "./step2/page";
+import OnboardingStep6 from "./step3/page";
+import OnboardingStep7 from "./step4/page";
 
 
 import { FaArrowRight } from "react-icons/fa";

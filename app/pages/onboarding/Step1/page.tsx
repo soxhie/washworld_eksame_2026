@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { saveOnboardingData } from "../utils/onboardingStorage";
 import Toggle from "../components/toggle";
 import { FaArrowRight } from "react-icons/fa";
@@ -13,6 +14,7 @@ import "../onboarding.css";
 
 
 export default function OnboardingStep1() {
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,16 +35,20 @@ export default function OnboardingStep1() {
       const res = await fetch(`http://localhost:80/email-validation?user_email=${encodeURIComponent(email)}`);
       if (!res.ok) {
         const data = await res.json();
-        setError(data.message || "User already signed up");
+        setError(data.message || "Bruger allerede oprettet");
         return;
       }
-      setSuccess("Signup successful!");
+      setSuccess("");
+      // Use Next.js router for navigation
+      setTimeout(() => {
+        router.push("/pages/onboarding/step2");
+      }, 1500);
     } catch (err) {
-      setError("Network error. Please try again.");
+      setError("Network error. Please try igen.");
     }
   };
   return (
-    <form className="Onboarding-1" onSubmit={validateEmail}>
+    <form className="Onboarding-1" onSubmit={validateEmail} action="#" autoComplete="off">
       <button
         className='tilbageLink'
         type="button"

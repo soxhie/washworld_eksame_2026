@@ -9,10 +9,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import PasswordRequirements from "../components/passwordRequirements";
 import "../onboarding.css";
-
-
-
-
 export default function OnboardingStep1() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");

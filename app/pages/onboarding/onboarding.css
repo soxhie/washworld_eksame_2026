@@ -96,77 +96,50 @@ h1{
 
   }
 }
-.Onboarding-3{
+.Onboarding-2{
   display: flex;
   flex-direction: column;
-  a{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #06C167;
-  }
+p{
+  text-align: center;
 }
-.Onboarding-4{
+label{
+  font-weight: 800;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+input{
+    margin-bottom: 18px;
+    border: 1px solid  #0CE578;
+    padding: 8px 16px;
+}
+.button{
   display: flex;
-  flex-direction: column;
-  input{
-    border: 1px solid#06C167;
-    margin-bottom: 17px;
-    padding: 8px;
-  }
-  p{
-    text-align: center;
-    margin: 20px 0;
-  }
-  label{
-    font-size: 16px;
-    font-weight: 800;
-  }
-  
-  button{
-    display: flex;
-    justify-content: center;
-    gap:6px;
-    padding: 8px;
-    border: 1px solid var(--secondary-dark-mode-80-gr-text-secondary, rgba(156, 163, 175, 0.80));
-    margin-bottom: 20px;
-  }
-  a{
-    text-align: center;
-    color: var(--secondary-colors-60-gr, rgba(102, 102, 102, 0.60));
-    
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
+  border: 1px solid white;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+}
+}
 
-  }
-}
-.Onboarding-5{
+.Onboarding-3{
   /* Plan button for step5 */
 .plan-btn {
   border: 1px solid #06C167;
   transition: border-color 0.2s;
-}
-.plan-btn.clicked {
-  border: 4px solid #0CE578;
-}
-  button{
-    background: #0ce57847;
-    
+  background: #0ce57847;
     align-items: center;
     width: -webkit-fill-available;
     padding: 16px 10px;
     display: flex;
     justify-content: space-between;
     margin-bottom:24px;
-  }
+}
+.plan-btn.clicked {
+  border: 4px solid #0CE578;
+}
+  
   input[type="radio"]{
     appearance: none;
   }
@@ -201,7 +174,7 @@ h1{
     line-height: 24px; /* 120% */
   }
 }
-.Onboarding-6{
+.Onboarding-4{
   display: flex;
   flex-direction: column;
   

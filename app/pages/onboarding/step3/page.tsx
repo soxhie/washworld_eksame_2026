@@ -6,7 +6,7 @@ import { FaChevronRight,FaChevronLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
 import "../onboarding.css"
-export default function OnboardingStep5() {
+export default function OnboardingStep3() {
     const plans = [
         { name: "guld", price: 139, description: "God og effectiv" },
         { name: "premium", price: 169, description: "Extra Grundig" },
@@ -15,7 +15,7 @@ export default function OnboardingStep5() {
     const [clickedPlan, setClickedPlan] = useState<string | null>(null);
     return (
         
-            <div className="Onboarding-5">
+            <div className="Onboarding-3">
                  <button
                         className='tilbageLink'
                         type="button"

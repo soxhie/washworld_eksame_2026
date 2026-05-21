@@ -1,17 +1,17 @@
 
-import { StepComponent } from "../components/stepsComponent";
+"use client"
 import CardInput from "../components/cardInput";
 import { FaArrowRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
+import { CiCreditCard1 } from "react-icons/ci";
 import { useState } from "react";
-
-export default function OnboardingStep6() {
+import MobilePayInput from "../components/MobilepayInput";
+import "../onboarding.css"
+export default function OnboardingStep4() {
     const [paymentMethod, setPaymentMethod] = useState("card");
-
-export default function OnboardingStep7() {
     return (
        
-            <div className="Onboarding-6">
+            <div className="Onboarding-4">
                 <button
                           className='tilbageLink'
                           type="button"
@@ -57,4 +57,4 @@ export default function OnboardingStep7() {
             </div>
        
     );
-}
+};

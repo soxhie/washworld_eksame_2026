@@ -7,55 +7,51 @@ import { FaChevronLeft } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-export default function Login() {
+    export default function login(){
     const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleLogin = async () => {
+   
+    async function handleLogin() {
         setError("");
+        setLoading(true);
         try {
-            const response = await fetch("http://127.0.0.1:80/api-login", {
+            const res = await fetch("http://localhost:80/api-login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     user_email: email,
-                    user_password: password
-                })
+                    user_password: password,
+                }),
+               
             });
-            const data = await response.json();
-            if (!response.ok) {
-                // Use backend error message if available
-                setError(data.message || "Login mislykkedes. Tjek dine oplysninger.");
-                return;
+            const data = await res.json();
+            if (!res.ok) {
+                setError(data.message || "Login failed");
+            } else {
+                // Optionally: save token/user info, redirect, etc.
+                setError("");
+                router.push("/pages/dashboard");
             }
-            if (data?.user) {
-                localStorage.setItem("authUser", JSON.stringify(data.user));
-            }
-            if (data?.access_token) {
-                localStorage.setItem("access_token", data.access_token);
-            }
-            router.push("/pages/dashboard");
-        } catch {
-            setError("Systemfejl. Prøv igen senere.");
+        } catch (err) {
+            setError("System under maintenance");
+        } finally {
+            setLoading(false);
         }
-    };
+    }
 
-   
-    
     return(
         <div className="login">
-                        <Link href="/"
-          className='tilbageLink'
-           
-        >
-          <FaChevronLeft /> Tilbage
-        </Link>
+            <Link href="/"
+            className='tilbageLink'>
+                <FaChevronLeft /> Tilbage
+            </Link>
             <h1>Login</h1>
             <div className="inputContainer">
                            <label>Email</label>
@@ -66,33 +62,35 @@ export default function Login() {
                     onChange={e => setEmail(e.target.value)}
                     required
                 />
-                       </div>
-                       <div className="inputContainer">
-                           <label>Adgangskode</label>
-                           <div style={{ display: "flex" }}>
-                <input
-                    name="user_password"
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    required
-                />
-                               <div
-                                   style={{ position: "absolute", right: "35px", marginTop: "8px", fontSize: "18px" }}
-                                   onClick={() => setShowPassword(!showPassword)}
-                               >
-                                   {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
-                               </div>
-                           </div>
-                                <button
-                                        className='nextButton'
-                                        type="button"
-                                        onClick={handleLogin}
-                                >
-                                        <FaArrowRight />
-                                </button>
-                                {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
-                       </div>
+            </div>
+            <div className="inputContainer">
+                <label>Adgangskode</label>
+                <div style={{ display: "flex" }}>
+    <input
+        name="user_password"
+        type={showPassword ? "text" : "password"}
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        required
+    />
+                    <div
+                        style={{ position: "absolute", right: "35px", marginTop: "8px", fontSize: "18px" }}
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+                    </div>
+                </div>
+                <Link href="/pages/forgotPassword">Glemt adgangskode? </Link>
+                    <button
+                        className='nextButton'
+                        type="button"
+                        onClick={handleLogin}
+                        disabled={loading}
+                    >
+                        <FaArrowRight />
+                    </button>
+                    {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+            </div>
         </div>
     )  
 }

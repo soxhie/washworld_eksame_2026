@@ -7,7 +7,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-export default function login() {
+export default function Login() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");

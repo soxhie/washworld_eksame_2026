@@ -7,12 +7,6 @@ import BottomNav from "../../../components/layout/BottomNav";
 import ProfileDetailsForm from "../components/ProfileDetailsForm";
 import "../profile.css";
 
-type AuthUser = {
-  user_phone?: string;
-  user_email?: string;
-  user_adress?: string;
-  car_plate?: string;
-};
 
 const DEFAULT_DETAILS_FORM = {
   phone: "+45 11 22 33 44",

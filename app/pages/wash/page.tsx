@@ -91,6 +91,7 @@ export default function WashPage() {
   const [selectedHallId, setSelectedHallId] = useState<string | null>(null);
   const [isLoadingHalls, setIsLoadingHalls] = useState(true);
   const [hallError, setHallError] = useState<string | null>(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -173,7 +174,9 @@ export default function WashPage() {
             address={selectedHall.address}
             queueStatus={selectedHall.status}
             waitTime={selectedHall.waitTime}
-            onStart={() => router.push("/pages/wash/washprogrambrilliant")}
+            isFavorite={isFavorite}
+            onFavoriteToggle={() => setIsFavorite((prev) => !prev)}
+            onStart={() => router.push("/pages/wash/activewash")}
             onSwitch={() => {
               if (nearbyHalls.length < 2) {
                 return;

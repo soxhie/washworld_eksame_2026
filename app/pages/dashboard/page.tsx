@@ -10,6 +10,7 @@ import AppHeader from "../../components/layout/AppHeader";
 import BottomNav from "../../components/layout/BottomNav";
 import SwipeToStart from "../../components/SwipeToStart/SwipeToStart";
 import mockDashboardData from "./data/mockDashboardData";
+import MembershipCard from "../wash/components/MembershipCard";
 
 const LiveWashMap = dynamic(() => import("./components/LiveWashMap"), {
   ssr: false,
@@ -38,7 +39,7 @@ type TrafficDay = {
   active?: boolean;
 };
 
-const ACTIVITY_WEEKDAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+const ACTIVITY_WEEKDAYS = ["MAN", "TIR", "ONS", "TOR", "FRE", "LØR", "SØN"];
 
 function getWeekdayIndex(date = new Date()) {
   const jsDay = date.getDay();
@@ -109,7 +110,8 @@ export default function DashboardPage() {
 
         const parsed: WashLocation[] = data;
         setLocations(parsed);
-        setSelectedLocationId(null);
+        const soeborg = parsed.find((loc) => loc.name.toLowerCase().includes("søborg"));
+        setSelectedLocationId(soeborg?.id ?? null);
         setIsLocationSheetOpen(false);
         setLoadError(parsed.length === 0 ? "Ingen Wash World lokationer fundet." : null);
       })
@@ -139,7 +141,7 @@ export default function DashboardPage() {
     const total = trafficData.reduce((sum, item) => sum + item.level, 0);
     return Math.round(total / trafficData.length);
   }, [trafficData]);
-  const activitySummary = averageActivityLevel > 72 ? "Quite busy" : averageActivityLevel > 56 ? "A little busy" : "Open and steady";
+  const activitySummary = averageActivityLevel > 72 ? "Travlt" : averageActivityLevel > 56 ? "Lidt travlt" : "Stille og roligt";
   const openingHoursLabel = selectedLocation?.openHours ?? "7-22";
   const membershipName = (mockDashboardData.user.membershipTier ?? "").replace(/^Medlemskab:\s*/i, "").trim() || "Standard";
 
@@ -221,7 +223,7 @@ export default function DashboardPage() {
               </p>
             ) : null}
 
-            <section className="membershipPanel" aria-label="Start vask sektion">
+            {/* <section className="membershipPanel" aria-label="Start vask sektion">
               <div className="membershipTopRow">
                 <div>
                   <p className="membershipTitle">Medlemskab</p>
@@ -244,7 +246,17 @@ export default function DashboardPage() {
               <div className="membershipSwipeWrap">
                 <SwipeToStart label="Start din vask" flush onComplete={() => router.push("/pages/wash/washprogrampremium")} />
               </div>
-            </section>
+            </section> */}
+            <MembershipCard
+              package="premium"
+              location={selectedLocation.name}
+              address={selectedLocation.address}
+              isFavorite={isFavorite}
+              onFavoriteToggle={() => setIsFavorite((prev) => !prev)}
+              onStart={() => router.push("/pages/wash/activewash")}
+              onSwitch={() => setIsLocationSheetOpen(false)}
+              variant="dashboard"
+            />
 
             <section className="activityPanel" aria-label="Aktivitet for valgt vaskehal">
               <div className="activityWeekdays" role="tablist" aria-label="Vaelg dag">
@@ -267,7 +279,7 @@ export default function DashboardPage() {
 
               <p className="activityStatus">
                 <span className="activityDot" aria-hidden="true" />
-                <strong>{selectedActivityDayIndex === todayActivityDayIndex ? "Live:" : `${ACTIVITY_WEEKDAYS[selectedActivityDayIndex]}:`}</strong>{" "}
+                <strong>{selectedActivityDayIndex === todayActivityDayIndex ? "Nu:" : `${ACTIVITY_WEEKDAYS[selectedActivityDayIndex]}:`}</strong>{" "}
                 {(() => {
                   const now = new Date();
                   const hour = now.getHours();
@@ -291,7 +303,11 @@ export default function DashboardPage() {
             </section>
             {/* Hall details section */}
             {selectedLocation.hallsCount || selectedLocation.selfWashCount || selectedLocation.vacuumCount || selectedLocation.preWashCount || selectedLocation.maxHeight ? (
-              <section className="hallDetailsPanel" aria-label="Hal detaljer" style={{ marginTop: 15, padding: 16, background: "#232323" }}>
+              <section
+                className="hallDetailsPanel"
+                aria-label="Hal detaljer"
+                style={{ marginTop: 15, padding: 16, background: "linear-gradient(180deg, rgba(41, 42, 45, 0.9) 0%, rgba(35, 36, 39, 0.9) 100%)" }}
+              >
                 <h3 style={{ margin: 0, fontSize: 18 }}>Hal detaljer</h3>
                 <ul style={{ margin: 0, padding: 0, listStyle: "none", fontSize: 15 }}>
                   <li>

@@ -5,17 +5,17 @@ type Props = {
 };
 
 export default function ProcessBar({ totalSeconds, secondsLeft, label }: Props) {
-  const size = 160;
-  const r = 72;
+  const size = 220;
+const r = 98;
   const circ = 2 * Math.PI * r;
   const dashOffset = circ * (secondsLeft / totalSeconds);
 
   return (
     <div style={{ position: "relative", width: size, height: size }}>
       <svg width={size} height={size} style={{ transform: "rotate(-90deg)" }}>
-        <circle cx="80" cy="80" r={r} fill="none" stroke="#333" strokeWidth="8" />
+        <circle cx="110" cy="110" r={r} fill="none" stroke="#333" strokeWidth="8" />
         <circle
-          cx="80" cy="80" r={r}
+          cx="110" cy="110" r={r}
           fill="none" stroke="#22c55e" strokeWidth="8"
           strokeLinecap="round"
           strokeDasharray={circ}
@@ -26,7 +26,7 @@ export default function ProcessBar({ totalSeconds, secondsLeft, label }: Props) 
       <div style={{
         position: "absolute", inset: 0,
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontWeight: 500, fontSize: 22, color: "#fff",
+        fontWeight: 500, fontSize: 54, color: "#fff",
       }}>
         {label}
       </div>

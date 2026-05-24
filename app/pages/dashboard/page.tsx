@@ -284,7 +284,7 @@ export default function DashboardPage() {
                   const now = new Date();
                   const hour = now.getHours();
                   if (selectedActivityDayIndex === todayActivityDayIndex && (hour < 7 || hour >= 22)) {
-                    return "Closed";
+                    return "Lukket";
                   }
                   return activitySummary;
                 })()}

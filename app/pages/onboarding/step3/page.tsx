@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 import { saveOnboardingData } from "../utils/onboardingStorage";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
-import "../onboarding.css"
+import "../onboarding.css";
 import Progress from "../components/progress";
 import { GrGroup } from "react-icons/gr";
+import BackButton from "@/app/components/layout/BackButton";
 type Membership = {
   membership_id: string;
   membership_name: string;
@@ -24,8 +25,8 @@ export default function OnboardingStep3() {
 
   useEffect(() => {
     fetch("http://127.0.0.1/api-memberships")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.status === "ok") setMemberships(data.memberships);
         else setError("Kunne ikke hente abonnement.");
       })
@@ -34,22 +35,18 @@ export default function OnboardingStep3() {
   }, []);
   return (
     <div className="Onboarding-3">
-      <button className='tilbageLink' type="button" onClick={() => router.back()}>
+      {/* <button className='tilbageLink' type="button" onClick={() => router.back()}>
         <FaChevronLeft /> Tilbage
-      </button>
+      </button> */}
+      <BackButton />
       <h1>Vælg Abonnement</h1>
       <p>Få ubegrænset bilvask til en fast lav pris og vask, hvor og hvornår det passer dig.</p>
 
       {loading && <p>Indlæser...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {memberships.map(plan => (
-        <button
-          type="button"
-          key={plan.membership_id}
-          className={clickedPlan === plan.membership_id ? "plan-btn clicked" : "plan-btn"}
-          onClick={() => setClickedPlan(plan.membership_id)}
-        >
+      {memberships.map((plan) => (
+        <button type="button" key={plan.membership_id} className={clickedPlan === plan.membership_id ? "plan-btn clicked" : "plan-btn"} onClick={() => setClickedPlan(plan.membership_id)}>
           <input type="radio" value={plan.membership_id} readOnly checked={clickedPlan === plan.membership_id} />
           <div className="icon-container">
             <GrGroup className="icon" />
@@ -60,12 +57,17 @@ export default function OnboardingStep3() {
             <h4>{plan.membership_price}kr./md.</h4>
             <p>{plan.membership_description}</p>
           </div>
-
         </button>
       ))}
-      <button onClick={() => { router.push("pages/wash/packages/gpb") }}>Sammelign pakker</button>
       <button
-        className='nextButton'
+        onClick={() => {
+          router.push("pages/wash/packages/gpb");
+        }}
+      >
+        Sammelign pakker
+      </button>
+      <button
+        className="nextButton"
         type="button"
         disabled={!clickedPlan}
         onClick={() => {

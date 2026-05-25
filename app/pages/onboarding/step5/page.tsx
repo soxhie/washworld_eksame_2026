@@ -5,14 +5,16 @@ import "../onboarding.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import Progress from "../components/progress";
+import BackButton from "@/app/components/layout/BackButton";
 export default function OnboardingStep5() {
     const router = useRouter();
 
     return (
         <div className="Onboarding-5">
-            <button className='tilbageLink' type="button" onClick={() => router.back()}>
+            {/* <button className='tilbageLink' type="button" onClick={() => router.back()}>
              <FaChevronLeft /> Tilbage
-            </button>
+            </button> */}
+            <BackButton/>
             <h1>Tjek din email</h1>
             <p>
                 Vi har sendt dig et link til at bekræfte din konto. Klik på linket i

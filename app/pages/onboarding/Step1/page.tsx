@@ -10,7 +10,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import PasswordRequirements from "../components/passwordRequirements";
 import "../onboarding.css";
 import Progress from "../components/progress";
-
+import BackButton from "@/app/components/layout/BackButton";
 
 
 export default function OnboardingStep1() {
@@ -57,13 +57,14 @@ export default function OnboardingStep1() {
   return (
     <div>
     <form className="Onboarding-1" onSubmit={validateEmail} action="#" autoComplete="off">
-      <button
+      {/* <button
         className='tilbageLink'
         type="button"
         onClick={() => router.back()}
       >
         <FaChevronLeft /> Tilbage
-      </button>
+      </button> */}
+        <BackButton/>
       <h1 className="title">Indtast navn</h1>
       <div className="inputContainer">
         <label>Navn</label>

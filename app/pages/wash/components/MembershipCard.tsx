@@ -1,7 +1,7 @@
 "use client";
 import { LuArrowUpRight } from "react-icons/lu";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import SwipeButton from "./SwipeButton";
+import swipeButton from "./swipeButton";
 import SwipeToStart from "../../../components/SwipeToStart/SwipeToStart";
 
 type Package = "guld" | "premium" | "brilliant";
@@ -154,7 +154,7 @@ function WashMembershipCard({
         <span style={{ fontSize: 11 }}>{waitTime}</span>
       </div>
       <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: 16 }}>
-        <SwipeButton variant="vask" onActivate={onStart} />
+        <swipeButton variant="vask" onActivate={onStart} />
       </div>
     </section>
   );

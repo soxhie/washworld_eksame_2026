@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { saveOnboardingData } from "../utils/onboardingStorage"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import Progress from "../components/progress";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import "../onboarding.css"
@@ -36,6 +37,7 @@ export default function OnboardingStep2() {
       >
         <FaArrowRight />
       </button>
+        <Progress/>
     </div>
 
   );

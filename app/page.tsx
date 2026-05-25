@@ -1,8 +1,11 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import "./pages/onboarding/onboarding.css"
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="Start">
       <Image
@@ -12,13 +15,20 @@ export default function Home() {
         alt="WashWorld"
         priority
       />
-      <div className="buttons">
-        <Link href="/pages/login" >
-          <button className="brandGrøn">Login</button>
-        </Link>
-        <Link href="/pages/onboarding/Step1">
-          <button className="primaryWhite">Opret bruger</button>
-        </Link>
+
+      <div>
+      <button 
+      className="brandGrøn"
+      onClick={() => {
+          router.push("/pages/login")
+        }}>Login</button>
+      <button
+        type="button"
+        className="primaryWhite"
+        onClick={() => {
+          router.push("/pages/onboarding/Step1")
+        }}
+      >Opret bruger</button>
       </div>
 
     </div>

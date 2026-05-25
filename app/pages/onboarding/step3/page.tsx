@@ -6,7 +6,8 @@ import { saveOnboardingData } from "../utils/onboardingStorage";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import "../onboarding.css"
-
+import Progress from "../components/progress";
+import { GrGroup } from "react-icons/gr";
 type Membership = {
   membership_id: string;
   membership_name: string;
@@ -50,25 +51,31 @@ export default function OnboardingStep3() {
           onClick={() => setClickedPlan(plan.membership_id)}
         >
           <input type="radio" value={plan.membership_id} readOnly checked={clickedPlan === plan.membership_id} />
-          <div>
-            {/* double check this one but should be fine? */}
-            <h3>{plan.membership_name.charAt(0).toUpperCase() + plan.membership_name.slice(1)} - {plan.membership_price}kr./md.</h3>
-            <h4>{plan.membership_description}</h4>
+         <div className="icon-container">
+          <GrGroup className="icon"/>
           </div>
-          <FaChevronRight />
+          <div style={{marginRight:"auto", textAlign:"left"}}>
+            {/* double check this one but should be fine? */}
+            <h2>{plan.membership_name.charAt(0).toUpperCase() + plan.membership_name.slice(1)}</h2>
+            <h4>{plan.membership_price}kr./md.</h4>
+            <p>{plan.membership_description}</p>
+          </div>
+        
         </button>
       ))}
+      <button onClick={() => {router.push("/pages/onboarding/step4")}}>Sammelign pakker</button>
       <button
         className='nextButton'
         type="button"
         disabled={!clickedPlan}
         onClick={() => {
           saveOnboardingData({ membership_fk: clickedPlan });
-          router.push("/pages/onboarding/step4");
+          router.push("/pages/wash/packages");
         }}
       >
         <FaArrowRight />
       </button>
+      <Progress/>
     </div>
   );
 }

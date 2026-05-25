@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import "../onboarding.css";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import Progress from "../components/progress";
 export default function OnboardingStep5() {
     const router = useRouter();
 
@@ -20,6 +21,7 @@ export default function OnboardingStep5() {
             <button className="nextButton" type="button" onClick={() => router.push("/pages/onboarding/step6")}>
                 <FaArrowRight />
             </button>
+            <Progress/>
         </div>
     );
 }

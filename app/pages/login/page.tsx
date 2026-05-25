@@ -87,7 +87,7 @@ export default function Login() {
             {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
           </div>
         </div>
-        <Link href="/pages/forgotPassword">Glemt adgangskode? </Link>
+        <Link className="glemtAdgangskode" href="/pages/forgotPassword">Glemt adgangskode? </Link>
         <button
           className="nextButton"
           type="button"

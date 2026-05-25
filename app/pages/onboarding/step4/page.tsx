@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 import { getOnboardingData, saveOnboardingData, clearOnboardingData } from "../utils/onboardingStorage";
 import { FaArrowRight, FaChevronLeft } from "react-icons/fa";
 import { CiCreditCard1 } from "react-icons/ci";
- 
+import process from "process";
 import CardInput from "../components/cardInput";
 import "../onboarding.css";
 import MobilePayInput from "../components/MobilepayInput";
+import Progress from "../components/progress";
  
 type PaymentMethod = {
     payment_gateway_id: string;
@@ -108,6 +109,7 @@ export default function OnboardingStep4() {
             <button className='nextButton' type="button" onClick={handleSubmit} disabled={submitting}>
                  <FaArrowRight />
             </button>
+            <Progress/>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import "../onboarding.css";
 import { FaCheck } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa";
+import Progress from "../components/progress";
 export default function OnboardingStep6() {
     const router = useRouter();
 
@@ -19,6 +20,7 @@ export default function OnboardingStep6() {
             <button className="nextButton" type="button" onClick={() => router.push("/pages/login")}>
               <FaChevronRight/>
             </button>
+            <Progress/>
         </div>
     );
 }

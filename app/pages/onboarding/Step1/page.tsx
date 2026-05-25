@@ -9,7 +9,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import PasswordRequirements from "../components/passwordRequirements";
 import "../onboarding.css";
-
+import Progress from "../components/progress";
 
 
 
@@ -55,10 +55,12 @@ export default function OnboardingStep1() {
     }
   };
   return (
+    <div>
     <form className="Onboarding-1" onSubmit={validateEmail} action="#" autoComplete="off">
       <button
         className='tilbageLink'
         type="button"
+        onClick={() => router.back()}
       >
         <FaChevronLeft /> Tilbage
       </button>
@@ -119,5 +121,7 @@ export default function OnboardingStep1() {
         <FaArrowRight />
       </button>
     </form>
+    <Progress/>
+    </div>
   );
 }

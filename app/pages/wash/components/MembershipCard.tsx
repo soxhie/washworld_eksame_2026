@@ -62,7 +62,7 @@ function DashboardMembershipCard({ pkg, address, isFavorite, onFavoriteToggle, o
         background: "linear-gradient(180deg, rgba(41, 42, 45, 0.9) 0%, rgba(35, 36, 39, 0.9) 100%)",
         border: "1px solid rgba(255, 255, 255, 0.08)",
       }}>
-        
+
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
         <div>
           <h1 style={{ margin: 0, fontSize: 30, fontWeight: 800, lineHeight: 0.8 }}>Medlemskab</h1>

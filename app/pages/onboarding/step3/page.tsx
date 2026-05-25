@@ -21,7 +21,7 @@ export default function OnboardingStep3() {
   const [clickedPlan, setClickedPlan] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  
+
   useEffect(() => {
     fetch("http://127.0.0.1/api-memberships")
       .then(res => res.json())
@@ -51,31 +51,31 @@ export default function OnboardingStep3() {
           onClick={() => setClickedPlan(plan.membership_id)}
         >
           <input type="radio" value={plan.membership_id} readOnly checked={clickedPlan === plan.membership_id} />
-         <div className="icon-container">
-          <GrGroup className="icon"/>
+          <div className="icon-container">
+            <GrGroup className="icon" />
           </div>
-          <div style={{marginRight:"auto", textAlign:"left"}}>
+          <div style={{ marginRight: "auto", textAlign: "left" }}>
             {/* double check this one but should be fine? */}
             <h2>{plan.membership_name.charAt(0).toUpperCase() + plan.membership_name.slice(1)}</h2>
             <h4>{plan.membership_price}kr./md.</h4>
             <p>{plan.membership_description}</p>
           </div>
-        
+
         </button>
       ))}
-      <button onClick={() => {router.push("/pages/onboarding/step4")}}>Sammelign pakker</button>
+      <button onClick={() => { router.push("pages/wash/packages/gpb") }}>Sammelign pakker</button>
       <button
         className='nextButton'
         type="button"
         disabled={!clickedPlan}
         onClick={() => {
           saveOnboardingData({ membership_fk: clickedPlan });
-          router.push("/pages/wash/packages");
+          router.push("/pages/onboarding/step4");
         }}
       >
         <FaArrowRight />
       </button>
-      <Progress/>
+      <Progress />
     </div>
   );
 }

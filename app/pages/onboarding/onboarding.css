@@ -16,7 +16,7 @@ h1{
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     width: stretch;
     color: var(--secondary-colors-60-gr, rgba(102, 102, 102, 0.60));
 }
@@ -331,7 +331,7 @@ p{
  .nextButton{
   border-radius: 100%;
   position: absolute;
-  top: 90%;
+  top: 85%;
   right: 25px;
   width: fit-content;
   background-color: var(--primary-colors-brand-grn-hvid-baggrund, #06C167);

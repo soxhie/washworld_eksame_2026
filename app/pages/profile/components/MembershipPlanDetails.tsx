@@ -1,27 +1,25 @@
 "use client";
 import BackButton from "@/app/components/layout/BackButton";
-import { IconType } from "react-icons";
-import {
-  LuCloud,
-  LuDisc,
-  LuDroplets,
-  LuSparkles,
-  LuSun,
-  LuWind,
-} from "react-icons/lu";
+import Image from "next/image";
 import { IoPeopleOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import SwipeToStart from "../../../components/SwipeToStart/SwipeToStart";
 import { SubscriptionPlan } from "../data/membershipTypes";
 
-function featureIcon(featureName: string): IconType {
+function featureIcon(featureName: string): string {
   const normalized = featureName.toLowerCase();
-  if (normalized.includes("shampoo") || normalized.includes("skum")) return LuCloud;
-  if (normalized.includes("borste") || normalized.includes("vask")) return LuDroplets;
-  if (normalized.includes("torr") || normalized.includes("blow")) return LuWind;
-  if (normalized.includes("hjul") || normalized.includes("hojtryk")) return LuDisc;
-  if (normalized.includes("voks") || normalized.includes("glans") || normalized.includes("poler")) return LuSparkles;
-  return LuSun;
+  if (normalized.includes("shampoo")) return "/svg/vaskeikoner/aktiv_shampoo_hvid.svg";
+  if (normalized.includes("skum")) return "/svg/vaskeikoner/skumforvask_hvid.svg";
+  if (normalized.includes("borste")) return "/svg/vaskeikoner/borstevask_hvid.svg";
+  if (normalized.includes("hjul")) return "/svg/vaskeikoner/hjulvask_hvid.svg";
+  if (normalized.includes("hojtryk") || normalized.includes("højtryk")) return "/svg/vaskeikoner/hotryksvask_hvid.svg";
+  if (normalized.includes("voks")) return "/svg/vaskeikoner/skyllevoks_hvid.svg";
+  if (normalized.includes("glans")) return "/svg/vaskeikoner/hojglans_hvid.svg";
+  if (normalized.includes("torr")) return "/svg/vaskeikoner/torring_hvid.svg";
+  if (normalized.includes("undervogn")) return "/svg/vaskeikoner/undervogns_hvid.svg";
+  if (normalized.includes("affedtning")) return "/svg/vaskeikoner/affedtning_hvid.svg";
+  if (normalized.includes("sæson") || normalized.includes("saeson")) return "/svg/vaskeikoner/seasonrens_hvid.svg";
+  return "/svg/vaskeikoner/skumforvask_hvid.svg";
 }
 
 interface MembershipPlanDetailsProps {
@@ -31,42 +29,32 @@ interface MembershipPlanDetailsProps {
 
 export default function MembershipPlanDetails({ onBack, plan }: MembershipPlanDetailsProps) {
   const router = useRouter();
-
   return (
     <section className="membershipPlanDetails" aria-label={`Valgt plan ${plan.name}`}>
-      {/* <button type="button" className="profileBackButton" onClick={onBack}>
-        <span aria-hidden="true">‹</span>
-        Tilbage
-      </button> */}
-      <BackButton/>
-
-      <article className="membershipPlanCard" aria-label="Valgt medlemskabsplan">
-              <span className="membershipPlanIconWrap" aria-hidden="true">
-                <IoPeopleOutline className="membershipPlanPeopleIcon" />
-              </span>
-              <div className="membershipCreatePlanInfo">
-                <span className="membershipCreatePlanName">{plan.name}</span>
-                <span className="membershipCreatePlanPrice">{plan.price}kr./md</span>
-                <span className="membershipCreatePlanDescription">{plan.shortDescription || "Læs mere om planen"}</span>
-              </div>
+      <BackButton />
+      <article className="membershipCreateCard" aria-label="Valgt medlemskabsplan">
+        <button type="button" className="membershipCreateCardAction" style={{ pointerEvents: "none" }}>
+          <span className="membershipPlanIconWrap" aria-hidden="true">
+            <IoPeopleOutline className="membershipPlanPeopleIcon" />
+          </span>
+          <div className="membershipCreatePlanInfo">
+            <span className="membershipCreatePlanName">{plan.name}</span>
+            <span className="membershipCreatePlanPrice">{plan.price}kr./md</span>
+            <span className="membershipCreatePlanDescription">{plan.shortDescription || "Læs mere om planen"}</span>
+          </div>
+        </button>
       </article>
-
       <h2 className="membershipIncludedTitle">Inkluderet i valgte {plan.name} program:</h2>
-
       <ul className="membershipIncludedList" aria-label="Inkluderede ydelser">
-        {plan.features.map((feature) => {
-          const Icon = featureIcon(feature);
-          return (
-            <li key={feature} className="membershipIncludedItem">
-              <span className="membershipIncludedIconWrap" aria-hidden="true">
-                <Icon className="membershipIncludedFeatureIcon" />
-              </span>
-              <span className="membershipIncludedLabel">{feature}</span>
-            </li>
-          );
-        })}
+        {plan.features.map((feature) => (
+          <li key={feature} className="membershipIncludedItem">
+            <span className="membershipIncludedIconWrap" aria-hidden="true">
+              <Image src={featureIcon(feature)} alt="" width={24} height={24} />
+            </span>
+            <span className="membershipIncludedLabel">{feature}</span>
+          </li>
+        ))}
       </ul>
-
       <SwipeToStart
         label="Skift medlemskab"
         completedLabel="Videresender..."

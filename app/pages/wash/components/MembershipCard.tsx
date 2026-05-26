@@ -150,7 +150,7 @@ function WashMembershipCard({
         </button>
       </div>
       <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 6 }}>
-        <span style={{ background: statusColors[queueStatus ?? ""] ?? "#ffbf24", color: "#0a0a0a", fontSize: 11, fontWeight: 700, padding: "2px 6px", borderRadius: "2px" }}>{queueStatus}</span>
+        <span style={{ background: statusColors[queueStatus ?? ""] ?? "#ffbf24", color: "#0a0a0a", fontSize: 11, fontWeight: 700, padding: "2px 6px" }}>{queueStatus}</span>
         <span style={{ fontSize: 11 }}>{waitTime}</span>
       </div>
       <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: 16 }}>

@@ -19,7 +19,7 @@ type Props = {
 export default function NearbyHalls({ halls, onSwitch }: Props) {
   return (
     <section style={{ marginTop: 30 }}>
-      <h3 style={{ fontSize: "var(--h3-size)", fontWeight: 800, margin: "0 0 0px", paddingLeft: "14px" }}>Vaskehaller i nærheden</h3>
+      <h3 style={{ fontSize: "var(--h3-size)", fontWeight: 800, margin: "0 0 12px", paddingLeft: "2px" }}>Vaskehaller i nærheden</h3>
       <ul style={{ listStyle: "none", margin: 0, background: "rgba(74, 74, 74, 0.4)", padding: "6px" }}>
         {halls.map((hall, i) => (
           <li key={hall.id} style={{ borderBottom: i < halls.length - 1 ? "1px solid #08d17a" : "none", padding: "12px 8px" }}>
@@ -40,7 +40,7 @@ export default function NearbyHalls({ halls, onSwitch }: Props) {
                   })()}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <span style={{ background: statusColors[hall.status], color: "#000", fontWeight: 700, fontSize: 12, padding: "3px 8px", borderRadius: "2px" }}>{hall.status}</span>
+                  <span style={{ background: statusColors[hall.status], color: "#000", fontWeight: 700, fontSize: 12, padding: "3px 8px" }}>{hall.status}</span>
                   <span style={{ fontSize: 11, color: statusColors[hall.status] }}>{hall.waitTime}</span>
                 </div>
               </div>

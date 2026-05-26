@@ -27,10 +27,10 @@ export default function MembershipCancelView({ onBack }: MembershipCancelViewPro
         <span className="membershipPlanIconWrap" aria-hidden="true">
           <IoPeopleOutline className="membershipPlanPeopleIcon" />
         </span>
-        <div className="membershipPlanInfo" style={{ padding: "20px" }}>
-          <h1 className="membershipPlanName" style={{ lineHeight: 1 }}>Premium</h1>
-          <p className="membershipPlanPrice" style={{ lineHeight: 1.5 }}>169kr./md</p>
-          <p className="membershipPlanDate" style={{ lineHeight: 1 }}>Betalingsdato: 01/07/2026</p>
+        <div className="membershipPlanInfo" style={{ padding: "10px" }}>
+          <h1 className="membershipPlanName">Premium</h1>
+          <p className="membershipPlanPrice">169kr./md</p>
+          <p className="membershipPlanDate">Betalingsdato: 01/07/2026</p>
         </div>
       </article>
 

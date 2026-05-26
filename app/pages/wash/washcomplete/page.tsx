@@ -1,7 +1,7 @@
 "use client";
 
 import AppHeader from "../../../components/layout/AppHeader";
-import BottomNav from "../../../components/layout/BottomNav";
+// import BottomNav from "../../../components/layout/BottomNav";
 import { PiCarBold } from "react-icons/pi";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ export default function WashCompletePage() {
           Tilbage til start
         </button>{" "}
       </div>
-      <BottomNav activeTab="wash" variant="angled" />
+      {/* <BottomNav activeTab="wash" variant="angled" /> */}
     </main>
   );
 }

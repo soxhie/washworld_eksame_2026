@@ -31,18 +31,19 @@ export default function MembershipDetails({ onBack, onCancel }: MembershipDetail
         <span className="membershipPlanIconWrap" aria-hidden="true">
           <span className="membershipPlanIconGroup">OO</span>
         </span>
-        <div className="membershipPlanInfo" style={{ padding: "20px" }}>
-          <h1 className="membershipPlanName" style={{ lineHeight: 1 }}>
+        <div className="membershipPlanInfo" style={{ padding: "10px" }}>
+          <h1 className="membershipPlanName">
             Premium
           </h1>
-          <p className="membershipPlanPrice" style={{ lineHeight: 1.5 }}>
+          <p className="membershipPlanPrice">
             169kr./md
           </p>
-          <p className="membershipPlanDate" style={{ lineHeight: 1 }}>
+          <p className="membershipPlanDate">
             Betalingsdato: 01/07/2026
           </p>
         </div>
       </article>
+      
 
       <h2 className="membershipIncludedTitle">Inkluderet i valgte Brilliant program:</h2>
 

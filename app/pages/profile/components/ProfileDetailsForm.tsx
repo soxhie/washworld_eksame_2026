@@ -45,7 +45,8 @@ export default function ProfileDetailsForm({
       
 
       <form className="detailsForm" onSubmit={onSubmit}>
-        <h3 className="detailsFormTitle" style={{ color: "#fff", marginBottom: "0.5rem", fontSize: "var(--h3-size)", fontWeight: 800, marginLeft: "10px" }}>Mine oplysninger</h3>
+        {/* <h3 className="detailsFormTitle" style={{ color: "#fff", marginBottom: "0.5rem", fontSize: "var(--h3-size)", fontWeight: 800, marginLeft: "10px" }}>Mine oplysninger</h3> */}
+                <h1 style={{ fontSize: "var(--display-h1-size)", lineHeight: "var(--display-h1-line)", fontWeight: 800, marginBottom:"10px", textAlign: "center" }}>Mine oplysninger</h1>
         <label className="detailsField" htmlFor="details-phone">
           <span className="detailsFieldLabelWrap">
             <LuPhone className="detailsFieldIcon" aria-hidden="true" />

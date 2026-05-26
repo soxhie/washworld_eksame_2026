@@ -31,7 +31,7 @@ export default function PackagesPage() {
           <FaChevronLeft /> Tilbage
         </button> */}
         <BackButton/>
-        <h1 style={{ fontSize: "var(--display-h1-size)", lineHeight: "var(--display-h1-line)", fontWeight: 800, margin: 0, textAlign: "center", color: "var(--color-active-bg)" }}>Vaskepakker</h1>
+        <h1 style={{ fontSize: "var(--display-h1-size)", lineHeight: "var(--display-h1-line)", fontWeight: 800, margin: 0, textAlign: "center" }}>Vaskepakker</h1>
         <p style={{ fontSize: "var(--body-sm-size)", lineHeight: "var(--body-sm-line)", margin: "4px 0 36px", textAlign: "center" }}>
           {packageDescriptions[active]}
         </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import AppHeader from "../../components/layout/AppHeader";
 import BottomNav from "../../components/layout/BottomNav";
@@ -10,6 +10,37 @@ import "./profile.css";
 export default function ProfilePage() {
   const router = useRouter();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      router.push("/pages/login");
+      return;
+    }
+    fetch("http://localhost:80/api-my-info", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(async (res) => {
+        if (res.status === 401) {
+          localStorage.removeItem("access_token");
+          router.push("/pages/login");
+          return;
+        }
+        const data = await res.json();
+        if (data.status === "ok") {
+          setUser(data.user);
+        } else {
+          setError(data.message || "Kunne ikke hente brugerdata");
+        }
+      })
+      .catch(() => setError("System under maintenance"))
+      .finally(() => setLoading(false));
+  }, [router]);
 
   function handleItemClick(id: string) {
     if (id === "logout") {
@@ -38,7 +69,21 @@ export default function ProfilePage() {
   return (
     <main className="ProfilePage">
       <AppHeader variant="brand" />
-      <ProfileMenu onItemClick={handleItemClick} />
+      {loading ? (
+        <div>Indlæser...</div>
+      ) : error ? (
+        <div style={{ color: "red" }}>{error}</div>
+      ) : user ? (
+        <>
+          <div className="profileInfo">
+            <div><b>Navn:</b> {user.user_name} {user.user_last_name}</div>
+            <div><b>Email:</b> {user.user_email}</div>
+            <div><b>Telefon:</b> {user.user_phone}</div>
+            {/* Add more user info as needed */}
+          </div>
+          <ProfileMenu onItemClick={handleItemClick} />
+        </>
+      ) : null}
       {showLogoutModal && (
         <div className="logoutOverlay" role="dialog" aria-modal="true" aria-label="Log ud bekræftelse">
           <div className="logoutModal">

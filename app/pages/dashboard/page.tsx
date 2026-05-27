@@ -97,6 +97,28 @@ export default function DashboardPage() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [selectedActivityDayIndex, setSelectedActivityDayIndex] = useState(() => getWeekdayIndex());
 
+async function handleFavoriteToggle() {
+  const previousValue = isFavorite;
+  setIsFavorite((prev) => !prev); // optimistic update
+
+  const token = localStorage.getItem("access_token");
+  const method = previousValue ? "DELETE" : "POST";
+
+  try {
+    const res = await fetch("http://localhost:80/api-favorites", {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ location_id: selectedLocation?.id }),
+    });
+    if (!res.ok) throw new Error("Fejl");
+  } catch {
+    setIsFavorite(previousValue); // rollback
+  }
+}
+
   const { locations, loadError } = useWashLocations(); // custom hook
   useEffect(() => {
     if (locations.length === 0) return;
@@ -229,7 +251,8 @@ export default function DashboardPage() {
                 location={selectedLocation.name}
                 address={selectedLocation.address}
                 isFavorite={isFavorite}
-                onFavoriteToggle={() => setIsFavorite((prev) => !prev)}
+                // onFavoriteToggle={() => setIsFavorite((prev) => !prev)}
+                onFavoriteToggle={handleFavoriteToggle}
                 onStart={() => router.push("/pages/wash/activewash")}
                 onSwitch={() => setIsLocationSheetOpen(false)}
                 variant="dashboard"

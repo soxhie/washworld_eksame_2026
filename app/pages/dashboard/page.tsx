@@ -242,7 +242,7 @@ export default function DashboardPage() {
             onClick={handleFilterToggle}
           >
             <LuSlidersHorizontal aria-hidden="true" />
-          </button> */}
+          </button> 
         </div>
         {isFilterOpen && (
           <div className="filter">

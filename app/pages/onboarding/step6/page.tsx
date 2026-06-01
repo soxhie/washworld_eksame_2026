@@ -2,23 +2,26 @@
 
 import { useRouter } from "next/navigation";
 import "../onboarding.css";
-import { FaCheck } from "react-icons/fa6";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import Progress from "../components/progress";
+import BackButton from "@/app/components/layout/BackButton";
 export default function OnboardingStep6() {
     const router = useRouter();
 
     return (
-        <div className="Onboarding-6">
-            <h1>Velkommen til WashWorld!</h1>
-            <FaCheck className="checkIcon" />
-            <h2>Du er nu medlem!</h2>
+        <div className="Onboarding-5">
+            {/* <button className='tilbageLink' type="button" onClick={() => router.back()}>
+             <FaChevronLeft /> Tilbage
+            </button> */}
+            <BackButton/>
+            <h1>Tjek din email</h1>
             <p>
-               Din bil er nu klar til vask!
+                Vi har sendt dig et link til at bekræfte din konto. Klik på linket i
+                emailen for at aktivere din profil.
             </p>
-            <p>God tur!</p>
-            <button className="nextButton" type="button" onClick={() => router.push("/pages/login")}>
-              <FaChevronRight/>
+            <button className="nextButton" type="button" onClick={() => router.push("/pages/onboarding/step7")}>
+                <FaArrowRight />
             </button>
             <Progress/>
         </div>

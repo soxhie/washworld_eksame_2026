@@ -7,7 +7,7 @@ type User = {
   user_last_name: string;
   user_email: string;
   user_phone: string;
-  user_adress: string | null;
+  user_address: string | null;
   car_plate: string | null;
   payment_gateway_name: string | null;
   membership_name: string | null;

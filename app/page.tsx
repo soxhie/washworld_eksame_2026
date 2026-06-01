@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import "./pages/onboarding/onboarding.css"
+import "./start.css"
 import { useRouter } from "next/navigation";
 
 export default function Home() {

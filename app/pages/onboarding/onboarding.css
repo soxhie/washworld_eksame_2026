@@ -23,24 +23,7 @@ h1{
 .progressDots .active{
   color: var(--color-primary);
 }
-.Start{
-  height: 100vh;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: url(../../../public/ChatGPT\ Image\ May\ 20\,\ 2026\ at\ 01_30_43\ PM\ 1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  button{
-  padding: 14px 0;
-  width: 100%;
-  border: none;
-  font-weight: 800;
-  font-size: 16px;
 
-}
-}
 .buttons{
   flex-direction: column;
   gap: 20px;
@@ -48,22 +31,9 @@ h1{
   height: fit-content;
   align-self: end;
 }
-.brandGrøn{
-  background-color: #06C167;
-  color: black;
-  margin-bottom: 18px;
-  cursor: pointer;
-}
-.primaryWhite{
-  background-color: white;
-  color: black;
-  cursor: pointer;
-}
 
-img {
-  width: 100%;
-  height: auto;
-}
+
+
 .inputContainer{
   margin-bottom: 16px;
   display: flex;
@@ -417,9 +387,10 @@ input:checked + .slider:before {
 }
 /* PinInput */
 .pinInputContainer{
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
+      gap: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30%;
   input{
     width: 53px;
     height: 53px;

@@ -104,6 +104,7 @@ export default function OnboardingStep1() {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
+        {error && <div style={{ color: 'red', marginTop: 4 }}>{error}</div>}
       </div>
       <div className="inputContainer">
         <label>Telefonnummer</label>
@@ -113,12 +114,10 @@ export default function OnboardingStep1() {
           value={phone}
           onChange={e => setPhone(e.target.value)}
           placeholder="12 34 56 78"
-
-
         />
       </div>
 
-      {error && <div style={{ color: 'red', marginTop: 4 }}>{error}</div>}
+      
       {success && <div style={{ color: 'green', marginTop: 4 }}>{success}</div>}
       <PasswordRequirements
         password={password}
